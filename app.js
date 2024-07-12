@@ -133,8 +133,11 @@ const criarHorasSelecao = () => {
 	let horasDisponiveis = '';
 
 	for (let i = 0; i < 24; i++) {
-		horasDisponiveis += `<option value="${i}:00">${i}:00</option>`;
-		horasDisponiveis += `<option value="${i}:30">${i}:30</option>`;
+		// validação para adicionar um 0 antes do numero caso ele nao tenha 2 digitos
+		const hora = String(i).padStart(2, '0');
+
+		horasDisponiveis += `<option value="${hora}:00">${hora}:00</option>`;
+		horasDisponiveis += `<option value="${hora}:30">${hora}:30</option>`;
 	}
 
 	document.querySelector('select[name="hora"]').innerHTML = horasDisponiveis;
